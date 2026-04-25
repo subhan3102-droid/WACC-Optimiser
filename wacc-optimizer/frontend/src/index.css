@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #f9f9f8;
+  }
+  .dark {
+    --color-bg: #0a0a0a;
+    --color-surface: #111110;
+  }
+  html { font-family: 'DM Sans', system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5;
+  }
+
+  .input {
+    @apply h-9 px-3 text-sm border border-neutral-200 dark:border-neutral-700 rounded-lg
+           bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white
+           focus:outline-none focus:ring-1 focus:ring-blue-400 dark:focus:ring-blue-500
+           transition-colors;
+  }
+
+  .input-wrap {
+    @apply relative;
+  }
+  .input-unit {
+    @apply absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-neutral-400 pointer-events-none;
+  }
+
+  .field-label {
+    @apply block text-[10px] font-medium uppercase tracking-widest text-neutral-400 mb-1.5;
+  }
+
+  .section-sublabel {
+    @apply text-[10px] font-medium uppercase tracking-widest text-neutral-400;
+  }
+
+  .run-btn {
+    @apply h-10 text-sm font-medium rounded-lg
+           bg-neutral-900 text-white dark:bg-white dark:text-neutral-900
+           hover:opacity-80 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed
+           transition-all;
+  }
+
+  .metric-card {
+    @apply bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3;
+  }
+  .metric-label {
+    @apply text-[10px] font-medium uppercase tracking-widest text-neutral-400 mb-0.5;
+  }
+  .metric-value {
+    @apply text-xl font-medium tabular-nums text-neutral-900 dark:text-white;
+  }
+  .metric-sub {
+    @apply text-[10px] text-neutral-400 mt-0.5;
+  }
+}
