@@ -31,12 +31,24 @@ export default function WaccChart({ data }: Props) {
         line: { width: 0 },
         layer: "below",
       })),
-      // Optimal range band
+      // Optimal range — left border line only
+      {
+        type: "line", xref: "x", yref: "paper",
+        x0: optimal_range.min, x1: optimal_range.min, y0: 0, y1: 1,
+        line: { color: "rgba(61,130,196,0.6)", width: 1.5, dash: "dot" },
+      },
+      // Optimal range — right border line only
+      {
+        type: "line", xref: "x", yref: "paper",
+        x0: optimal_range.max, x1: optimal_range.max, y0: 0, y1: 1,
+        line: { color: "rgba(61,130,196,0.6)", width: 1.5, dash: "dot" },
+      },
+      // Optimal range — subtle fill
       {
         type: "rect", xref: "x", yref: "paper",
         x0: optimal_range.min, x1: optimal_range.max, y0: 0, y1: 1,
-        fillcolor: "rgba(61,130,196,0.13)",
-        line: { color: "rgba(61,130,196,0.5)", width: 1, dash: "dot" },
+        fillcolor: "rgba(61,130,196,0.06)",
+        line: { width: 0 },
         layer: "below",
       },
     ];
