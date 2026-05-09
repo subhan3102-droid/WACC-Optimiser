@@ -54,10 +54,10 @@ export default function InputForm({ onSubmit, loading }: Props) {
         )}
       </div>
 
-      {/* Market params */}
+      {/* Market params — 2 col top, 1 col bottom for even layout */}
       <div>
-        <p className="section-sublabel">Market parameters</p>
-        <div className="grid grid-cols-3 gap-3">
+        <p className="section-sublabel mb-2">Market parameters</p>
+        <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
             <label className="field-label">Risk-free rate</label>
             <div className="input-wrap">
@@ -74,20 +74,20 @@ export default function InputForm({ onSubmit, loading }: Props) {
               <span className="input-unit">%</span>
             </div>
           </div>
-          <div>
-            <label className="field-label">Country risk</label>
-            <div className="input-wrap">
-              <input type="number" value={values.countryRiskPremium} onChange={set("countryRiskPremium")}
-                step="0.1" min="0" max="20" className="input w-full pr-6" />
-              <span className="input-unit">%</span>
-            </div>
+        </div>
+        <div>
+          <label className="field-label">Country risk premium</label>
+          <div className="input-wrap">
+            <input type="number" value={values.countryRiskPremium} onChange={set("countryRiskPremium")}
+              step="0.1" min="0" max="20" className="input w-full pr-6" />
+            <span className="input-unit">%</span>
           </div>
         </div>
       </div>
 
       {/* Capital structure */}
       <div>
-        <p className="section-sublabel">Capital structure ($M)</p>
+        <p className="section-sublabel mb-2">Capital structure ($M)</p>
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="field-label">Equity</label>
