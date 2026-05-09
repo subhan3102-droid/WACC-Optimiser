@@ -124,11 +124,11 @@ export default function WaccChart({ data }: Props) {
         tickfont: { size: 10 },
         ticksuffix: "%",
       },
-      hoverlabel: {
-        bgcolor: "var(--color-bg)",
-        bordercolor: "rgba(128,128,128,0.2)",
-        font: { size: 12 },
-      },
+       hoverlabel: {
+  bgcolor: "#1a1a1a",
+  bordercolor: "rgba(255,255,255,0.15)",
+  font: { size: 12, color: "#ffffff" },
+},
     };
 
     window.Plotly.react(ref.current, traces, layout, {
