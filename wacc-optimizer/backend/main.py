@@ -216,12 +216,19 @@ def calculate_wacc(req: WaccRequest):
         beta_list.append(round(float(bl), 4))
         risk_list.append(risk)
 
-    # Optimal range: neighbourhood around global WACC minimum
+    # Optimal range: find the band where WACC is within 0.25pp of the minimum
     min_wacc = min(wacc_list)
     min_idx = wacc_list.index(min_wacc)
     opt_debt = debt_pcts[min_idx]
-    opt_min = max(0, round(opt_debt - 8, 1))
-    opt_max = min(req.debt_pct_max, round(opt_debt + 8, 1))
+    threshold = 0.25  # pp above minimum still considered "optimal"
+    optimal_indices = [i for i, w in enumerate(wacc_list) if w <= min_wacc + threshold]
+    opt_min = max(0, debt_pcts[optimal_indices[0]])
+    opt_max = min(req.debt_pct_max, debt_pcts[optimal_indices[-1]])
+    # Ensure minimum band width of 6pp for visibility
+    if opt_max - opt_min < 6:
+        mid = (opt_min + opt_max) / 2
+        opt_min = max(0, round(mid - 3, 1))
+        opt_max = min(req.debt_pct_max, round(mid + 3, 1))
 
     risk_zones = compute_risk_zones(debt_pcts, risk_list)
 
