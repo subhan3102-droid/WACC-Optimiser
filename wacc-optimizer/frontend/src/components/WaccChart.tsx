@@ -43,14 +43,7 @@ export default function WaccChart({ data }: Props) {
         x0: optimal_range.max, x1: optimal_range.max, y0: 0, y1: 1,
         line: { color: "rgba(61,130,196,0.6)", width: 1.5, dash: "dot" },
       },
-      // Optimal range — subtle fill
-      {
-        type: "rect", xref: "x", yref: "paper",
-        x0: optimal_range.min, x1: optimal_range.max, y0: 0, y1: 1,
-        fillcolor: "rgba(61,130,196,0.06)",
-        line: { width: 0 },
-        layer: "below",
-      },
+      
     ];
 
     const annotations: any[] = [
